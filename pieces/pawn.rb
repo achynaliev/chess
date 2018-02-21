@@ -5,7 +5,12 @@ class Pawn < Piece
 
   def initialize(color, board, pos)
     super(color, board, pos)
-    @first_step = true
+    @symbol = nil
+    if @color == "white"
+      @symbol = "♙"
+    else
+      @symbol = "♟"
+    end
   end
 
   def forward_direction

@@ -15,16 +15,40 @@ class Display
     8.times do |row|
       8.times do |col|
         if @cursor.cursor_pos == [row, col]
-          print "  #{@board.board[row][col].name}  ".red
+          if row % 2 == 0 && col % 2 == 0 || (row % 2 == 1 && col % 2 == 1)
+            if @board.board[row][col].is_a? NullPiece
+              print "   ".colorize(:color => :blue, :background => :red)
+            else
+              print " #{@board.board[row][col].symbol} ".colorize(:color => :blue, :background => :red)
+            end
+          else
+            if @board.board[row][col].is_a? NullPiece
+              print "   ".colorize(:color => :blue, :background => :red)
+            else
+            print " #{@board.board[row][col].symbol} ".colorize(:color => :blue, :background => :red)
+            end
+          end
         else
-          print "  #{@board.board[row][col].name}  "
+          if (row % 2 == 0 && col % 2 == 0) || (row % 2 == 1 && col % 2 == 1)
+            if @board.board[row][col].is_a? NullPiece
+              print "   ".colorize(:color => :blue, :background => :white)
+            else
+              print " #{@board.board[row][col].symbol} ".colorize(:color => :blue, :background => :white)
+            end
+          else
+            if @board.board[row][col].is_a? NullPiece
+              print "   ".colorize(:color => :blue, :background => :yellow)
+            else
+              print " #{@board.board[row][col].symbol} ".colorize(:color => :blue, :background => :yellow)
+            end
+          end
         end
       end
       puts
-      puts
     end
-    # @cursor.get_input
-    # display
+
+    @cursor.get_input
+    display
   end
 
 end

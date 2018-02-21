@@ -95,7 +95,7 @@ class Cursor
   end
 
   def update_pos(diff)
-    @cursor_pos[0] += diff[0]
-    @cursor_pos[-1] += diff[-1]
+    @cursor_pos[0] = (@cursor_pos[0] += diff[0]) % 8
+    @cursor_pos[-1] = (@cursor_pos[-1] += diff[-1]) % 8
   end
 end

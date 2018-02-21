@@ -1,9 +1,10 @@
 require_relative "piece"
 
 class NullPiece < Piece
+  attr_reader :symbol
 
   def initialize
-    @name = "Null"
+    @symbol = "  "
   end
 
 end

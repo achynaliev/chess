@@ -1,12 +1,11 @@
 
 class Piece
-  attr_reader :color, :board, :name
+  attr_reader :color, :board, :symbol
 
   def initialize(color, board, pos)
     @color = color
     @board = board
     @pos = pos
-    @name = "notnull"
   end
 
   def moves

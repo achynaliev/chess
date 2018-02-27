@@ -31,6 +31,20 @@ class Display
             print " #{@board.board[row][col].symbol} ".colorize(:color => :black, :background => :red)
             end
           end
+        elsif @cursor.selected_pos == [row, col]
+            if row % 2 == 0 && col % 2 == 0 || (row % 2 == 1 && col % 2 == 1)
+              if @board.board[row][col].is_a? NullPiece
+                print "   ".colorize(:color => :black, :background => :blue)
+              else
+                print " #{@board.board[row][col].symbol} ".colorize(:color => :black, :background => :blue)
+              end
+            else
+              if @board.board[row][col].is_a? NullPiece
+                print "   ".colorize(:color => :black, :background => :blue)
+              else
+              print " #{@board.board[row][col].symbol} ".colorize(:color => :black, :background => :blue)
+              end
+            end
         else
           if (row % 2 == 0 && col % 2 == 0) || (row % 2 == 1 && col % 2 == 1)
             if @board.board[row][col].is_a? NullPiece

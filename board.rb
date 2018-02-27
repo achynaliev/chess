@@ -15,6 +15,18 @@ class Board
   def initialize
     @board = Array.new(8) { Array.new(8, "") }
     populate_board
+    @selected = nil
+  end
+
+  def get_selected(pos)
+    if @selected == nil
+      @selected = pos.dup
+    else
+      moving = pos.dup
+      move_piece("white", @selected, moving)
+      @selected = nil
+    end
+
   end
 
   def [](pos)

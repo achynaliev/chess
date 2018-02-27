@@ -1,20 +1,22 @@
 require_relative "board.rb"
 require_relative "display.rb"
+require_relative "player.rb"
 
 
 class Game
-  attr_reader :board, :display, :players, :current_player
+  attr_reader :board, :display, :player, :current_player
 
-  def initialize(board, display, player1=nil, player2=nil)
+  def initialize(board, display, player)
     @board = board
     @display = display
-    @player1 = player1
-    @player2 = player2
-    @current_player = player1
+    @player = player
+    # @player2 = player2
+    # @current_player = player1
+    @cursor = Cursor.new([0, 0], board)
   end
 
   def play
-    display.display
+    self.player.get_input(@cursor)
   end
 
 end
@@ -22,8 +24,7 @@ end
 if __FILE__ == $PROGRAM_NAME
   board = Board.new
   display = Display.new(board)
-  game = Game.new(board, display)
-  game.play
-  game.board.move_piece("color", [1,0],[2,0])
+  atai = Player.new("atai", "black", display)
+  game = Game.new(board, display, atai)
   game.play
 end

@@ -28,10 +28,10 @@ class Board
   end
 
   def populate_board
-    populate(1, "white")
-    populate_pawns(0, "white")
-    populate_pawns(6, "black")
-    populate(7, "black")
+    populate(0, "black")
+    populate_pawns(1, "black")
+    populate_pawns(6, "white")
+    populate(7, "white")
     populate_nullpieces
   end
 

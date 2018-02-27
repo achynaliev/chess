@@ -3,11 +3,14 @@ require_relative 'board'
 require_relative 'cursor'
 
 class Display
-  attr_reader :cursor, :board
+  attr_reader :cursor, :board, :cursor
 
   def initialize(board)
     @board = board
-    @cursor = Cursor.new([0, 0], board)
+  end
+
+  def set_cur(curs)
+    @cursor = curs
   end
 
   def display
@@ -17,38 +20,35 @@ class Display
         if @cursor.cursor_pos == [row, col]
           if row % 2 == 0 && col % 2 == 0 || (row % 2 == 1 && col % 2 == 1)
             if @board.board[row][col].is_a? NullPiece
-              print "   ".colorize(:color => :blue, :background => :red)
+              print "   ".colorize(:color => :black, :background => :red)
             else
-              print " #{@board.board[row][col].symbol} ".colorize(:color => :blue, :background => :red)
+              print " #{@board.board[row][col].symbol} ".colorize(:color => :black, :background => :red)
             end
           else
             if @board.board[row][col].is_a? NullPiece
-              print "   ".colorize(:color => :blue, :background => :red)
+              print "   ".colorize(:color => :black, :background => :red)
             else
-            print " #{@board.board[row][col].symbol} ".colorize(:color => :blue, :background => :red)
+            print " #{@board.board[row][col].symbol} ".colorize(:color => :black, :background => :red)
             end
           end
         else
           if (row % 2 == 0 && col % 2 == 0) || (row % 2 == 1 && col % 2 == 1)
             if @board.board[row][col].is_a? NullPiece
-              print "   ".colorize(:color => :blue, :background => :white)
+              print "   ".colorize(:color => :black, :background => :white)
             else
-              print " #{@board.board[row][col].symbol} ".colorize(:color => :blue, :background => :white)
+              print " #{@board.board[row][col].symbol} ".colorize(:color => :black, :background => :white)
             end
           else
             if @board.board[row][col].is_a? NullPiece
-              print "   ".colorize(:color => :blue, :background => :yellow)
+              print "   ".colorize(:color => :black, :background => :yellow)
             else
-              print " #{@board.board[row][col].symbol} ".colorize(:color => :blue, :background => :yellow)
+              print " #{@board.board[row][col].symbol} ".colorize(:color => :black, :background => :yellow)
             end
           end
         end
       end
       puts
     end
-
-    @cursor.get_input
-    display
   end
 
 end
